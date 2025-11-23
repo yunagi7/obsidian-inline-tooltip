@@ -89,7 +89,7 @@ README LANGUAGE / README 语言：[English](https://github.com/yunagi7/obsidian-
 ### 手动安装
 
 1. 从 [Releases](https://github.com/yunagi7/obsidian-inline-tooltip/releases) 页面下载 `main.js` 和 `manifest.json`。
-2. 在你的仓库 `.obsidian/plugins/` 目录下创建一个文件夹，例如 `obsidian-inline-tooltip`。注意：`.obsidian` 文件夹可能处于隐藏状态。在 macOS 系统中，您应该可以按 `Cmd+Shift+Dot`在 Finder 中显示该文件夹。
+2. 在你的仓库 `.obsidian/plugins/` 目录下创建一个文件夹，例如 `obsidian-inline-tooltip`。注意：`.obsidian` 文件夹可能处于隐藏状态。在 macOS 系统中，您应该可以按 `Cmd+Shift+Dot` 在 Finder 中显示该文件夹。
 3. 将下载的文件放入该文件夹。
 4. 重启 Obsidian 并在第三方插件设置中启用它。
 
@@ -102,3 +102,4 @@ README LANGUAGE / README 语言：[English](https://github.com/yunagi7/obsidian-
 ## 开发
 
 欢迎贡献和修改！
+也欢迎添加更多配色方案，只需将存有您当前颜色配置的 `data.json` 重命名为 `*您的方案名称*.json` 并上传到 `schemes` 文件夹即可。

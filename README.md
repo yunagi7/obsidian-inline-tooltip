@@ -103,4 +103,4 @@ I built this plugin to solve that friction. It abstracts the complex HTML struct
 ## Development
 
 Contributions and modifications are welcome!
-Add more color schemes is also welcome, simply rename and upload your `*your scheme name*.json` to the folder `schemes`.
+Add more color schemes is also welcome, Simply rename your `data.json` file containing your current color configuration to `*your scheme name*.json` and upload it to the `schemes` folder.

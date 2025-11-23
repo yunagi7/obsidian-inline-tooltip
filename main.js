@@ -189,18 +189,18 @@ module.exports = class InlineTooltip extends Plugin {
 
     this.addCommand({
       id: 'insert-inline-tooltip',
-      name: this.txt('Insert Inline Tooltip', '插入名词解释 (Tooltip)'),
+      name: this.txt('Insert Inline Tooltip', '插入提示框 (Tooltip)'),
       editorCallback: (editor, view) => {
         const selection = editor.getSelection();
         
         if (!selection) {
 
-          const placeholder = this.txt('{Term}{Explanation}', '{名词}{解释}');
+          const placeholder = this.txt('{Term}{Description}', '{词语}{提示}');
           editor.replaceSelection(placeholder);
           
           // Cursor offset
-          // English {Term}{Explanation} (Cursor offset -13)
-          // 中文 {名词}{解释} (光标回退6)
+          // English {Term}{Description} (Cursor offset -13)
+          // 中文 {词语}{提示} (光标回退6)
           const isZh = this.settings.language === 'zh';
           const offset = isZh ? 6 : 13; 
           
