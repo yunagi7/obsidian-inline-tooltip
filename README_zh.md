@@ -1,6 +1,6 @@
-# Obsidian Inline Tooltip (行内名词解释)
+# Obsidian Inline Tooltip (行内提示框)
 
-这就一款为 Obsidian 设计的插件，可以让你在笔记中轻松添加优雅的行内“名词解释”（Tooltip）功能。
+这就一款为 Obsidian 设计的插件，可以让你在笔记中轻松添加优雅的行内“提示框 / 词语浮动注释”（Tooltip）功能。
 
 完美支持 **实时预览 (Live Preview)** 和 **阅读视图 (Reading View)**。
 
@@ -10,10 +10,10 @@ README LANGUAGE / README 语言：[English](https://github.com/yunagi7/obsidian-
 
 ## 功能特点
 
-- **语法简单**：只需这样写：`{名词}{解释}`。
+- **语法简单**：只需这样写：`{词语}{浮动提示框内容}`。
 - **支持实时预览**：
     - 当光标 **离开** 时，渲染为带虚线下划线的名词，鼠标悬停显示解释气泡。
-    - 当光标 **移入** 时，自动展开为源码 `{名词}{解释}`，方便编辑修改。
+    - 当光标 **移入** 时，自动展开为源码 `{词语}{浮动提示框内容}`，方便编辑修改。
 - **支持阅读视图**：在阅读模式下完美渲染。
 - **可定制**：在设置中自定义颜色、宽度、字体大小以及是否显示箭头。
 - **双语支持**：插件界面支持中文和英文切换。
@@ -29,15 +29,15 @@ README LANGUAGE / README 语言：[English](https://github.com/yunagi7/obsidian-
 ```
 
 - **第一部分**：`熵（Entropy）`（这是显示在正文中的词）。
-- **第二部分**：`一种测量在动力学方面不能做功的能量总数，也就是当总体的熵增加，其做功能力也下降，熵的量度正是能量退化的指标。`（这是鼠标悬停时显示的解释）。
+- **第二部分**：`一种测量在动力学方面不能做功的能量总数，也就是当总体的熵增加，其做功能力也下降，熵的量度正是能量退化的指标。`（这是鼠标悬停时显示的提示框内容）。
 
 ### 快捷命令
 
 你也可以使用命令面板：
 
 1. 选中你想要解释的词。
-2. 按下 `Ctrl/Cmd + P` 打开命令面板，搜索 **"插入名词解释 (Tooltip)"**。
-3. 插件会自动包裹你选中的词，并将光标定位在“解释”的位置，方便你直接输入。
+2. 按下 `Ctrl/Cmd + P` 打开命令面板，搜索 **"插入提示框 (Tooltip)"**。
+3. 插件会自动包裹你选中的词，并将光标定位在“提示框内容”的位置，方便你直接输入。
 
 ## 设置选项
 
@@ -69,6 +69,8 @@ README LANGUAGE / README 语言：[English](https://github.com/yunagi7/obsidian-
 
 #### 示例：樱花主题配色 (Sakura)
 
+![樱花主题配色](./image/sakura.png)
+
 如果您喜欢这套配色方案，可以在设置中手动配置：
 
 ```json
@@ -78,9 +80,7 @@ README LANGUAGE / README 语言：[English](https://github.com/yunagi7/obsidian-
 "textColor": "rgba(86,33,53,0.95)" // 文字颜色
 ```
 
-**快捷导入**：
-
-您可以从项目的 [Releases](https://github.com/yunagi7/obsidian-inline-tooltip/releases) 页面下载预设的 `sakura.json` 文件。然后将其移动到 `.obsidian/plugins/obsidian-inline-tooltip` 文件夹，并重命名为 `data.json`，即可快速应用该配色。
+您也可以从项目的 [Releases](https://github.com/yunagi7/obsidian-inline-tooltip/releases) 页面下载预设的 `sakura.json` 文件。然后将其移动到 `.obsidian/plugins/obsidian-inline-tooltip` 文件夹，并重命名为 `data.json`，即可快速应用该配色。
 
 ## 安装方法
 我仍在更新此插件。如果一切顺利，不久后，您就可以直接从应用内安装此插件。
@@ -95,9 +95,9 @@ README LANGUAGE / README 语言：[English](https://github.com/yunagi7/obsidian-
 
 ## 灵感来源
 
-这个插件的诞生源于对效率的追求。起初，我尝试通过 CSS 片段配合手动编写 `<span class="p-tooltip" data-tip="解释">名词</span>` 标签来实现悬停效果。虽然效果不错，但在 Markdown 笔记中频繁插入冗长的 HTML 代码不仅繁琐，还严重破坏了写作的流畅度。
+这个插件的诞生源于对效率的追求。起初，我尝试通过 CSS snippet 配合手动编写 `<span class="p-tooltip" data-tip="提示框内容">名词</span>` 到笔记中来实现悬停效果。虽然效果不错，但在 Markdown 笔记中频繁插入冗长的 HTML 代码不仅繁琐，还严重破坏了写作的流畅度。
 
-为了解决这个问题，我开发了这个插件。它将繁杂的 HTML 标签封装在简洁的 `{名词}{解释}` 语法背后，让你专注于内容创作，而无需操心底层实现，且可以自定义外观。
+为了解决这个问题，我开发了这个插件。它将繁杂的 HTML 标签封装在简洁的 `{名词}{提示框内容}` 语法背后，让你专注于内容创作，而无需操心底层实现，且可以自定义外观。
 
 ## 开发
 

@@ -1,0 +1,12 @@
+{
+  "language": "en",
+  "borderColor": "rgba(255,146,196,0.95)",
+  "backgroundTop": "rgba(233,177,205,0.98)",
+  "backgroundBottom": "rgba(252,209,215,0.88)",
+  "textColor": "rgba(86,33,53,0.95)",
+  "widthPx": 300,
+  "maxWidthVw": 90,
+  "fontSizePx": 14,
+  "lineHeight": 1.4,
+  "showArrow": true
+}
