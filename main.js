@@ -9,7 +9,7 @@ const DEFAULT_SETTINGS = {
   backgroundTop: 'rgba(18,18,18,0.98)',
   backgroundBottom: 'rgba(10,10,10,0.95)',
   textColor: '#f6f2e9',
-  widthPx: 300, 
+  widthPx: 300,
   maxWidthVw: 90,
   fontSizePx: 14,
   lineHeight: 1.4,
@@ -46,23 +46,23 @@ const tooltipExtension = ViewPlugin.fromClass(class {
   buildDecorations(view) {
     const builder = new RangeSetBuilder();
     const REGEX = /\{([^{}]+)\}\{([^{}]+)\}/g;
-    
+
     const cursor = view.state.selection.main.head;
 
-    for (const {from, to} of view.visibleRanges) {
+    for (const { from, to } of view.visibleRanges) {
       const text = view.state.doc.sliceString(from, to);
       let match;
-      
+
       while ((match = REGEX.exec(text)) !== null) {
         const matchStart = from + match.index;
         const matchEnd = matchStart + match[0].length;
-        
+
         const isCursorInside = cursor >= matchStart && cursor <= matchEnd;
 
         if (!isCursorInside) {
           builder.add(
-            matchStart, 
-            matchEnd, 
+            matchStart,
+            matchEnd,
             Decoration.replace({
               widget: new TooltipWidget(match[1], match[2])
             })
@@ -84,7 +84,7 @@ class TooltipSettingTab extends PluginSettingTab {
     this.plugin = plugin;
   }
 
-// Language
+  // Language
   t(en, zh) {
     return this.plugin.settings.language === 'zh' ? zh : en;
   }
@@ -92,7 +92,7 @@ class TooltipSettingTab extends PluginSettingTab {
   display() {
     const { containerEl } = this;
     containerEl.empty();
-    
+
 
     containerEl.createEl('h3', { text: 'General / 常规' });
     new Setting(containerEl)
@@ -108,7 +108,7 @@ class TooltipSettingTab extends PluginSettingTab {
           this.display();
         }));
 
-// Appearance Settings
+    // Appearance Settings
     containerEl.createEl('h3', { text: this.t('Appearance Settings', '外观设置') });
 
     const addText = (name, desc, get, onChange) => {
@@ -119,43 +119,43 @@ class TooltipSettingTab extends PluginSettingTab {
     };
 
     addText(
-      this.t('Border color', '边框颜色'), 
-      this.t('CSS color value (e.g. #FF0000 or rgba...)', 'CSS 颜色值 (如 #FF0000 或 rgba...)'), 
+      this.t('Border color', '边框颜色'),
+      this.t('CSS color value (e.g. #FF0000 or rgba...)', 'CSS 颜色值 (如 #FF0000 或 rgba...)'),
       () => this.plugin.settings.borderColor,
       async (v) => { this.plugin.settings.borderColor = v || DEFAULT_SETTINGS.borderColor; await this.plugin.saveData(this.plugin.settings); this.plugin.applyStyles(); }
     );
 
     addText(
-      this.t('Background color (top)', '背景色 (上)'), 
-      this.t('Top color of the gradient background', '渐变背景顶部颜色'), 
+      this.t('Background color (top)', '背景色 (上)'),
+      this.t('Top color of the gradient background', '渐变背景顶部颜色'),
       () => this.plugin.settings.backgroundTop,
       async (v) => { this.plugin.settings.backgroundTop = v || DEFAULT_SETTINGS.backgroundTop; await this.plugin.saveData(this.plugin.settings); this.plugin.applyStyles(); }
     );
 
     addText(
-      this.t('Background color (bottom)', '背景色 (下)'), 
-      this.t('Bottom color of the gradient background', '渐变背景底部颜色'), 
+      this.t('Background color (bottom)', '背景色 (下)'),
+      this.t('Bottom color of the gradient background', '渐变背景底部颜色'),
       () => this.plugin.settings.backgroundBottom,
       async (v) => { this.plugin.settings.backgroundBottom = v || DEFAULT_SETTINGS.backgroundBottom; await this.plugin.saveData(this.plugin.settings); this.plugin.applyStyles(); }
     );
 
     addText(
-      this.t('Text color', '文字颜色'), 
-      this.t('Color of the tooltip text', 'Tooltip 文字颜色'), 
+      this.t('Text color', '文字颜色'),
+      this.t('Color of the tooltip text', 'Tooltip 文字颜色'),
       () => this.plugin.settings.textColor,
       async (v) => { this.plugin.settings.textColor = v || DEFAULT_SETTINGS.textColor; await this.plugin.saveData(this.plugin.settings); this.plugin.applyStyles(); }
     );
 
     addText(
-      this.t('Fixed width (px)', '固定宽度 (px)'), 
-      this.t('Width of the tooltip', 'Tooltip 的宽度'), 
+      this.t('Fixed width (px)', '固定宽度 (px)'),
+      this.t('Width of the tooltip', 'Tooltip 的宽度'),
       () => this.plugin.settings.widthPx,
       async (v) => { this.plugin.settings.widthPx = parseInt(v) || DEFAULT_SETTINGS.widthPx; await this.plugin.saveData(this.plugin.settings); this.plugin.applyStyles(); }
     );
 
     addText(
-      this.t('Font size (px)', '字体大小 (px)'), 
-      this.t('Font size of the content', '内容字体大小'), 
+      this.t('Font size (px)', '字体大小 (px)'),
+      this.t('Font size of the content', '内容字体大小'),
       () => this.plugin.settings.fontSizePx,
       async (v) => { this.plugin.settings.fontSizePx = parseInt(v) || DEFAULT_SETTINGS.fontSizePx; await this.plugin.saveData(this.plugin.settings); this.plugin.applyStyles(); }
     );
@@ -176,13 +176,13 @@ module.exports = class InlineTooltip extends Plugin {
 
   async onload() {
     this.settings = Object.assign({}, DEFAULT_SETTINGS, await this.loadData() || {});
-    
-    console.log('Loading Inline Tooltip plugin...'); 
-    
+
+    console.log('Loading Inline Tooltip plugin...');
+
     this.addSettingTab(new TooltipSettingTab(this.app, this));
-    
-    this.registerMarkdownPostProcessor((el, ctx) => { 
-      this.processTooltips(el); 
+
+    this.registerMarkdownPostProcessor((el, ctx) => {
+      this.processTooltips(el);
     });
 
     this.registerEditorExtension(tooltipExtension);
@@ -192,27 +192,27 @@ module.exports = class InlineTooltip extends Plugin {
       name: this.txt('Insert Inline Tooltip', '插入提示框 (Tooltip)'),
       editorCallback: (editor, view) => {
         const selection = editor.getSelection();
-        
+
         if (!selection) {
 
           const placeholder = this.txt('{Term}{Description}', '{词语}{提示}');
           editor.replaceSelection(placeholder);
-          
+
           // Cursor offset
           // English {Term}{Description} (Cursor offset -13)
           // 中文 {词语}{提示} (光标回退6)
           const isZh = this.settings.language === 'zh';
-          const offset = isZh ? 6 : 13; 
-          
+          const offset = isZh ? 6 : 13;
+
           const cursor = editor.getCursor();
           const chPos = Math.max(0, cursor.ch - offset);
-          editor.setCursor({ line: cursor.line, ch: chPos }); 
+          editor.setCursor({ line: cursor.line, ch: chPos });
           return;
         }
-        
+
         editor.replaceSelection(`{${selection}}{}`);
         const cursor = editor.getCursor();
-        editor.setCursor({ line: cursor.line, ch: cursor.ch - 1 }); 
+        editor.setCursor({ line: cursor.line, ch: cursor.ch - 1 });
       }
     });
 
@@ -228,8 +228,8 @@ module.exports = class InlineTooltip extends Plugin {
     const id = 'inline-tooltip-styles';
     let el = document.getElementById(id);
     if (!el) {
-      el = document.createElement('style'); 
-      el.id = id; 
+      el = document.createElement('style');
+      el.id = id;
       document.head.appendChild(el);
     }
     const s = this.settings;
@@ -306,7 +306,7 @@ module.exports = class InlineTooltip extends Plugin {
       if (REGEX.test(walker.currentNode.nodeValue)) {
         textNodes.push(walker.currentNode);
       }
-      REGEX.lastIndex = 0; 
+      REGEX.lastIndex = 0;
     }
 
     for (const textNode of textNodes) {
@@ -316,7 +316,7 @@ module.exports = class InlineTooltip extends Plugin {
       const frag = document.createDocumentFragment();
       let lastIndex = 0;
       let match;
-      REGEX.lastIndex = 0; 
+      REGEX.lastIndex = 0;
       while ((match = REGEX.exec(text)) !== null) {
         const matchStart = match.index;
         if (matchStart > lastIndex) frag.appendChild(document.createTextNode(text.slice(lastIndex, matchStart)));
