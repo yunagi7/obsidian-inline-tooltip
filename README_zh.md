@@ -6,7 +6,7 @@
 
 README LANGUAGE / README 语言：[English](https://github.com/yunagi7/obsidian-inline-tooltip/blob/main/README.md) [简体中文](https://github.com/yunagi7/obsidian-inline-tooltip/blob/main/README_zh.md)
 
-*GIF here soon*
+![GIF](./image/gif_cn.gif)
 
 ## 功能特点
 
@@ -103,3 +103,6 @@ README LANGUAGE / README 语言：[English](https://github.com/yunagi7/obsidian-
 
 欢迎贡献和修改！
 也欢迎添加更多配色方案，只需将存有您当前颜色配置的 `data.json` 重命名为 `*您的方案名称*.json` 并上传到 `schemes` 文件夹即可。
+
+## 问题
+在移动端，若词语过于靠左，浮动提示框依然居中，导致用户看不到全部浮动提示框的内容。

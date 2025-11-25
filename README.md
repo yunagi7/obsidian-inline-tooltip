@@ -6,7 +6,7 @@ It works seamlessly in both **Live Preview** and **Reading View**.
 
 README LANGUAGE / README 语言：[English](https://github.com/yunagi7/obsidian-inline-tooltip/blob/main/README.md) [简体中文](https://github.com/yunagi7/obsidian-inline-tooltip/blob/main/README_zh.md)
 
-*GIF here soon*
+![GIF](./image/gif_en.gif)
 
 ## Features
 
@@ -41,7 +41,7 @@ You can also use the command palette:
 
 ## Settings
 
-You can customize the look and feel in **Settings > Inline Tooltip**:
+You can customize the look and feel in **Settings -> Inline Tooltip**:
 
 - **Language**: Switch between English and Chinese.
 - **Border & Text Color**: Match your current theme.
@@ -104,3 +104,6 @@ I built this plugin to solve that friction. It abstracts the complex HTML struct
 
 Contributions and modifications are welcome!
 Add more color schemes is also welcome, Simply rename your `data.json` file containing your current color configuration to `*your scheme name*.json` and upload it to the `schemes` folder.
+
+## Issues
+On mobile devices, if the word is too far to the left, the floating tooltip remains centered, causing users to not see the full content of the tooltip.
